@@ -1,9 +1,12 @@
-FROM python:3.9.6-alpine3.14
+FROM python:3.9-slim
 
-#WORKDIR /app
+WORKDIR /app
 
-RUN pip install python-telegram-bot
+COPY . .
+
 RUN pip install -r requirements.txt
+RUN pip install python-telegram-bot
 
 CMD ["python", "bot.py"]
+
 
