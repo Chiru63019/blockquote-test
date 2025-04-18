@@ -3,6 +3,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import random
 
+# Function to handle the /quote command
 async def quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     quotes = [
         "The only limit to our realization of tomorrow is our doubts of today.",
@@ -11,15 +12,18 @@ async def quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "Success is not how high you have climbed, but how you make a positive difference to the world."
     ]
     selected_quote = random.choice(quotes)
-    await update.message.reply_text(selected_quote)
+    
+    # Send the selected quote as a blockquote
+    await update.message.reply_text(f"> {selected_quote}", parse_mode='Markdown')
 
 def main() -> None:
     application = ApplicationBuilder().token("7854424887:AAGa42aSgHDInjkWMuVknJuRugQSpB2QtTY").build()
+
+    # Register the command handler for /quote
     application.add_handler(CommandHandler("quote", quote))
 
-    # Run the bot using polling
+    # Start polling for updates
     application.run_polling()
 
 if __name__ == '__main__':
     main()
-    
