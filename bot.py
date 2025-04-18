@@ -6,9 +6,9 @@ import random
 # Function to handle the /quote command
 async def quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     quotes = [
-        "<pre>The only limit to our realization of tomorrow is our doubts of today.</pre>",
+        "<blockquote>The only limit to our realization of tomorrow is our doubts of today.</blockquote>",
         "<blockquote>Life is 10% what happens to us and 90% how we react to it.</blockquote>",
-        "<quote>The best way to predict the future is to create it.</quote>",
+        "<blockquote>The best way to predict the future is to create it.</blockquote>",
         "<blockquote>Success is not how high you have climbed, but how you make a positive difference to the world.</blockquote>"
     ]
     selected_quote = random.choice(quotes)
