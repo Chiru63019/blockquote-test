@@ -14,8 +14,8 @@ def quote(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(selected_quote)
 
 def main() -> None:
-    # Replace 'YOUR_TOKEN' with your bot's token
-    updater = Updater("YOUR_TOKEN")
+    # Replace 'YOUR_TOK' with your bot's token
+    updater = Updater("7854424887:AAGa42aSgHDInjkWMuVknJuRugQSpB2QtTY")
 
     # Register the command handler
     updater.dispatcher.add_handler(CommandHandler("quote", quote))
