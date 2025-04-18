@@ -1,8 +1,8 @@
+#YOUR_TOKEN = "7854424887:AAGa42aSgHDInjkWMuVknJuRugQSpB2QtTY" 
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, Application
-import os
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+import random
 
-YOUR_TOKEN = "7854424887:AAGa42aSgHDInjkWMuVknJuRugQSpB2QtTY" 
 async def quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     quotes = [
         "The only limit to our realization of tomorrow is our doubts of today.",
@@ -15,13 +15,10 @@ async def quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 def main() -> None:
     application = ApplicationBuilder().token("7854424887:AAGa42aSgHDInjkWMuVknJuRugQSpB2QtTY").build()
-
     application.add_handler(CommandHandler("quote", quote))
 
-    # Set a webhook URL
-    webhook_url = os.getenv('WEBHOOK_URL')  # Set this in Koyeb's environment variables
-    application.run_webhook(listen='0.0.0.0', port=int(os.getenv('PORT', '8443')), url_path='7854424887:AAGa42aSgHDInjkWMuVknJuRugQSpB2QtTY')
-    application.bot.set_webhook(f"{webhook_url}/{YOUR_TOKEN}")
+    # Run the bot using polling
+    application.run_polling()
 
 if __name__ == '__main__':
     main()
